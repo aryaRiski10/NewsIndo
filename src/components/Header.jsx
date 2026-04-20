@@ -5,7 +5,7 @@ export default function Header() {
                 <div className="eyebrow-line"></div>
                 <span className="eyebrow-text">Blog &amp; Artikel</span>
             </div>
-            <h1 className="site-title">My <em>Simple</em> Posts</h1>
+            <h1 className="site-title"><em>News</em>Indo</h1>
         </header>
     )
 }

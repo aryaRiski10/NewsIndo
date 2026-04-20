@@ -1,5 +1,5 @@
-export default function Article({ title, content, tags, date, index }) {
-    const formattedDate = new Date(date).toLocaleDateString('id-ID', {
+export default function Article({ title, contentSnippet, isoDate, category, link, index }) {
+    const formattedDate = new Date(isoDate).toLocaleDateString('id-ID', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
@@ -13,9 +13,9 @@ export default function Article({ title, content, tags, date, index }) {
                     <span className="post-category-dot"></span>
                     <span className="post-date-inline">{formattedDate}</span>
                 </div>
-                <h2 className="post-title">{title}</h2>
-                <p className="post-excerpt">{content}</p>
-                <div className="post-tags flex flex-wrap gap-[6px]">{tags.map(tag => <span key={tag} className="tag">{tag}</span>)}</div>
+                <a href={link} className="post-title">{title}</a>
+                <p className="post-excerpt">{contentSnippet}</p>
+                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="tag">{category}</span></div>
             </div>
         </article>
     )

@@ -183,6 +183,42 @@
 }
 
 
+/* Pagination */
+
+.pagination {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pg-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0 16px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    flex-shrink: 0;
+}
+
+.pg-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0d0d0f;
+    font-weight: 500;
+}
+
+
 /* Footer */
 
 .site-footer {
