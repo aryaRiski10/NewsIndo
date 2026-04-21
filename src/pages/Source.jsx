@@ -57,12 +57,24 @@ export default function Source({ endpointSource }) {
         fetchNewsBySource();
     }, [sourceName, endpointSource])
 
-    const totalDataSearch = news.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
+    const filteredNews = news.filter(post => {
+        if (activeCategory != 'Semua' && search) {
+            return post.category === activeCategory && post.title.toLowerCase().includes(search.toLowerCase())
+        } else if (activeCategory != 'Semua') {
+            return post.category === activeCategory
+        } else if (search) {
+            return post.title.toLowerCase().includes(search.toLowerCase())
+        } else {
+            return true
+        }
+    })
 
-    const totalPages = Math.ceil(totalDataSearch.length / newsPerPage)
+    const totalDataSearch = filteredNews.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
+
+    const totalPages = Math.ceil(filteredNews.length / newsPerPage)
     const indexOfLastNews = currentPage * newsPerPage
     const indexOfFirstNews = indexOfLastNews - newsPerPage
-    const currentNews = totalDataSearch.slice(indexOfFirstNews, indexOfFirstNews + newsPerPage)
+    const currentNews = filteredNews.slice(indexOfFirstNews, indexOfFirstNews + newsPerPage)
 
     return (
         <div className="source-page container">
