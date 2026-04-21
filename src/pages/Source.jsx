@@ -62,7 +62,7 @@ export default function Source({ endpointSource }) {
     const totalPages = Math.ceil(totalDataSearch.length / newsPerPage)
     const indexOfLastNews = currentPage * newsPerPage
     const indexOfFirstNews = indexOfLastNews - newsPerPage
-    const currentNews = totalDataSearch.slice(indexOfFirstNews, indexOfLastNews)
+    const currentNews = totalDataSearch.slice(indexOfFirstNews, indexOfFirstNews + newsPerPage)
 
     return (
         <div className="source-page container">
@@ -77,7 +77,7 @@ export default function Source({ endpointSource }) {
                         currentNews.map((item, index) => (
                             <Article
                                 key={item.link}
-                                index={index}
+                                index={indexOfFirstNews + index}
                                 title={item.title}
                                 content={item.contentSnippet ?? item.description ?? item.content}
                                 category={item.category}

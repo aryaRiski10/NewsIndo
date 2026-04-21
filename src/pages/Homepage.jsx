@@ -38,7 +38,7 @@ export default function Homepage({ allNewsSource }) {
     const totalPages = Math.ceil(filteredNews.length / newsPerPage)
     const indexOfLastNews = currentPage * newsPerPage
     const indexOfFirstNews = indexOfLastNews - newsPerPage
-    const currentNews = filteredNews.slice(indexOfFirstNews, indexOfLastNews)
+    const currentNews = filteredNews.slice(indexOfFirstNews, indexOfFirstNews + newsPerPage)
 
     return (
         <>
@@ -52,7 +52,7 @@ export default function Homepage({ allNewsSource }) {
                         currentNews.map((item, index) => (
                             <Article
                                 key={item.link}
-                                index={index}
+                                index={indexOfFirstNews + index}
                                 title={item.title}
                                 content={item.contentSnippet ?? item.description ?? item.content}
                                 category={item.category}

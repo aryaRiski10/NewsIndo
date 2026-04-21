@@ -56,7 +56,7 @@ function App() {
     fetchAllData();
   }, [])
 
-  if (loading) return <div className="loading">Loading...</div>
+  if (loading) return <div className="loading text-center content-center p-[60px]">Loading...</div>
 
   const listSources = Object.entries(sources).map(([key, value]) => key)
 
