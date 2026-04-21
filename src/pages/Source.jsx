@@ -83,7 +83,7 @@ export default function Source({ endpointSource }) {
             <Filter categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
 
             <div className="posts">
-                <div className="results-meta">Menampilkan <span>{totalDataSearch.length}</span> dari <span>{news.length}</span> hasil pencarian</div>
+                <div className="results-meta">Menampilkan <span>{totalDataSearch.length}</span> dari <span>{totalDataSearch.length}</span> hasil pencarian</div>
                 <div className="posts-list">
                     {currentNews.length > 0 ? (
                         currentNews.map((item, index) => (
