@@ -1,10 +1,11 @@
-export default function Article({ title, contentSnippet, isoDate, category, link, index }) {
+export default function Article({ title, content, isoDate, category, link, index }) {
     const formattedDate = new Date(isoDate).toLocaleDateString('id-ID', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
     })
 
+    // const excerpt = 
     return (
         <article className="post-item">
             <div className="post-body relative">
@@ -14,8 +15,8 @@ export default function Article({ title, contentSnippet, isoDate, category, link
                     <span className="post-date-inline">{formattedDate}</span>
                 </div>
                 <a href={link} className="post-title">{title}</a>
-                <p className="post-excerpt">{contentSnippet}</p>
-                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="tag">{category}</span></div>
+                <p className="post-excerpt">{content}</p>
+                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="category">{category}</span></div>
             </div>
         </article>
     )
