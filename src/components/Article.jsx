@@ -16,7 +16,7 @@ export default function Article({ title, content, isoDate, category, link, index
                 </div>
                 <a href={link} className="post-title">{title}</a>
                 <p className="post-excerpt">{content}</p>
-                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="category">{category}</span></div>
+                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="category">{category.replace(/-/g, ' ')}</span></div>
             </div>
         </article>
     )
