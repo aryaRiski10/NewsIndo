@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { useOutletContext } from 'react-router-dom'
 import { getSource, getAllNews } from '../services/newsServices'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
@@ -10,7 +10,8 @@ import Filter from '../components/Filter'
 import Footer from '../components/Footer'
 import Pagination from '../components/Pagination'
 
-export default function Homepage({ allNewsSource }) {
+export default function Homepage() {
+    const { allNewsSource } = useOutletContext()
     const [search, setSearch] = useState('')
     const [activeCategory, setActiveCategory] = useState('Semua')
     const [currentPage, setCurrentPage] = useState(1)

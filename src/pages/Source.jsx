@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useOutletContext, useLoaderData } from "react-router-dom"
 import { getAllNews } from "../services/newsServices"
 import Navbar from "../components/Navbar"
 import Header from "../components/Header"
@@ -9,55 +9,23 @@ import Pagination from "../components/Pagination"
 import Search from "../components/Search"
 import Filter from "../components/Filter"
 
-export default function Source({ endpointSource }) {
-    const { sourceName } = useParams()
+export default function Source() {
+    const { allNewsSource } = useOutletContext()
+    const { dataNews } = useLoaderData()
     const [search, setSearch] = useState('')
     const [news, setNews] = useState([])
     const [activeCategory, setActiveCategory] = useState('Semua')
     const [currentPage, setCurrentPage] = useState(1)
     const newsPerPage = 10
 
-    const categories = ["Semua", ...new Set(news.map(post => post.category))]
+
+    const categories = ["Semua", ...new Set(dataNews.map(post => post.category))]
 
     const handlerSearch = (event) => {
         setSearch(event.target.value)
     }
 
-    useEffect(() => {
-        const fetchNewsBySource = async () => {
-            try {
-                const bySource = endpointSource.find((url) => url.includes(sourceName))
-                if (!bySource) return
-                const newsBySource = await getAllNews(bySource)
-                const dataNews = newsBySource.map((news, index) => {
-                    let category = "Lainnya"
-                    try {
-                        if (news.link.includes('cnn') || (news.link.includes('cnbc'))) {
-                            category = new URL(news.link).pathname.split('/')[1]
-                        } else if (news.link.includes('tempo')) {
-                            category = new URL(news.link).hostname.split('.')[0]
-                        } else if (news.link.includes('republika')) {
-                            category = news.categories ?? "Lainnya"
-                        } else {
-                            category = "Lainnya"
-                        }
-                    } catch (error) {
-                        console.error('Error parsing URL:', error);
-                    }
-                    return {
-                        category,
-                        ...news
-                    }
-                })
-                setNews(dataNews)
-            } catch (error) {
-                console.error('Error fetching news by source:', error);
-            }
-        }
-        fetchNewsBySource();
-    }, [sourceName, endpointSource])
-
-    const filteredNews = news.filter(post => {
+    const filteredNews = dataNews.filter(post => {
         if (activeCategory != 'Semua' && search) {
             return post.category === activeCategory && post.title.toLowerCase().includes(search.toLowerCase())
         } else if (activeCategory != 'Semua') {

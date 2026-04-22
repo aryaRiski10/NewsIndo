@@ -14,9 +14,9 @@ export default function Article({ title, content, isoDate, category, link, index
                     <span className="post-category-dot"></span>
                     <span className="post-date-inline">{formattedDate}</span>
                 </div>
-                <a href={link} className="post-title">{title}</a>
-                <p className="post-excerpt">{content}</p>
-                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="category">{category.replace(/-/g, ' ')}</span></div>
+                <a href={link} className="post-title">{title ? title : "No Title"}</a>
+                <p className="post-excerpt">{content ? content : "No Content"}</p>
+                <div className="post-tags flex flex-wrap gap-[6px]"><span key={category} className="category">{typeof category === 'string' ? category.replace(/-/g, ' ') : category}</span></div>
             </div>
         </article>
     )
