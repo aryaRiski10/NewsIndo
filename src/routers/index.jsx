@@ -5,12 +5,13 @@ import App from "../App";
 import RootLayout from "../layouts/RootLayout";
 import Error from "../components/Error";
 import { loaderSource, loaderBySource } from "../services/newsServices";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout />,
-        HydrateFallback: () => null,
+        HydrateFallback: Loading,
         loader: loaderSource,
         errorElement: <Error />,
         children: [
