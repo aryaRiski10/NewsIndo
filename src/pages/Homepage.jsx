@@ -57,6 +57,7 @@ export default function Homepage() {
                                 title={item.title}
                                 content={item.contentSnippet ?? item.description ?? item.content}
                                 category={item.category}
+                                image={item.image?.small}
                                 isoDate={item.isoDate}
                                 link={item.link} />
                         ))

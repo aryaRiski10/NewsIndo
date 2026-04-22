@@ -61,6 +61,7 @@ export default function Source() {
                                 title={item.title}
                                 content={item.contentSnippet ?? item.description ?? item.content}
                                 category={item.category}
+                                image={item.image?.small}
                                 isoDate={item.isoDate}
                                 link={item.link} />
                         ))
