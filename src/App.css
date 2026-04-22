@@ -38,7 +38,8 @@
 }
 
 .category-btn:hover,
-.nav-news-item:hover {
+.nav-news-item:hover,
+.nav-news-item.active {
     border-color: rgba(201, 169, 110, 0.2);
     color: #c9a96e;
     background: rgba(201, 169, 110, 0.08);
