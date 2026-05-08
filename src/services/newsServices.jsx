@@ -23,7 +23,7 @@ export async function getAllNews(url) {
 
 export async function loaderSource() {
     const dataSources = await getSource();
-    const topSources = Object.fromEntries(Object.entries(dataSources).slice(0, 4))
+    const topSources = Object.fromEntries(Object.entries(dataSources).filter((_, index) => index !== 2).slice(0, 5))
     // setSources(topSources);
 
     const allUrls = Object.entries(topSources).map(([key, value]) => value.all).flat()
